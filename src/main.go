@@ -39,7 +39,7 @@ func main() {
     Source: https://rdmd.readme.io/docs/code-blocks
     */
 
-    fileExtBuff := readJsonFile("src/lang.json")
+    fileExtBuff := readJsonFile("lang/lang.json")
 
     // Load files from the specified directory
     dirFiles := getFiles(args[0])
@@ -54,7 +54,6 @@ func main() {
         // Validate file extensions
         currentFileExt := getFileExtension(file)
         toWrite := checkFileExtension(currentFileExt, fileExtBuff)
-
 
         // Process writing to the output file
         if toWrite {
@@ -83,6 +82,9 @@ func getFiles(path string) []string {
 
     // Read the directory
     files, err = dir.Readdirnames(0)
+    for val := range files {
+        files[val] = path + "/" + files[val]
+    }
     if err != nil {
         panic(err)
     }
