@@ -1,0 +1,180 @@
+{
+  "ASP.MET": [
+        "asp",
+        "aspx"
+      ],
+      "C": [
+        "c"
+      ],
+      "C++": [
+        "cpp"
+      ],
+      "C#": [
+        "cs"
+      ],
+      "Clojure": [
+        "clj",
+        "cljs",
+        "cljx",
+        "clojure"
+      ],
+      "CSS": [
+        "css",
+        "less",
+        "sass",
+        "scss",
+        "styl",
+        "stylus"
+      ],
+      "cURL": [
+        "curl"
+      ],
+      "D": [
+        "d"
+      ],
+      "Dart": [
+        "dart"
+      ],
+      "Diff": [
+        "diff",
+        "patch"
+      ],
+      "Docker": [
+        "dockerfile"
+      ],
+      "Erlang": [
+        "erl",
+        "erlang"
+      ],
+      "Go": [
+        "go"
+      ],
+      "Groovy": [
+        "groovy",
+        "gradle"
+      ],
+      "Handlebars": [
+        "handlebars",
+        "hbs",
+        "mustache"
+      ],
+      "HTML/XML": [
+        "html",
+        "htm",
+        "xhtml",
+        "xml",
+        "xsl",
+        "xslt",
+        "plist"
+      ],
+      "HTTP": [
+        "http",
+        "https"
+      ],
+      "Java": [
+        "java"
+      ],
+      "JavaScript": [
+        "js",
+        "jsx",
+        "node"
+      ],
+      "JSON": [
+        "json"
+      ],
+      "Julia": [
+        "jl",
+        "julia"
+      ],
+      "Kotlin": [
+        "kt",
+        "ktm",
+        "kts"
+      ],
+      "Liquid": [
+        "liquid"
+      ],
+      "Markdown": [
+        "md",
+        "markdown"
+      ],
+      "Objective-C": [
+        "objc",
+        "objectivec"
+      ],
+      "Objective-C++": [
+        "objcpp",
+        "objectivecpp"
+      ],
+      "Ocaml": [
+        "ml",
+        "mli",
+        "mll",
+        "mly"
+      ],
+      "Perl": [
+        "pl",
+        "pl"
+      ],
+      "PHP": [
+        "php"
+      ],
+      "PowerShell": [
+        "ps1",
+        "powershell"
+      ],
+      "Python": [
+        "py",
+        "python"
+      ],
+      "R": [
+        "r"
+      ],
+      "React": [
+        "react",
+        "jsx"
+      ],
+      "Ruby": [
+        "rb",
+        "ruby",
+        "rbx"
+      ],
+      "Scala": [
+        "scala"
+      ],
+      "Shell": [
+        "sh",
+        "bash",
+        "zsh",
+        "ksh",
+        "shell"
+      ],
+      "SQL": [
+        "sql",
+        "mysql",
+        "pgsql"
+      ],
+      "Swift": [
+        "swift"
+      ],
+      "TeX": [
+        "tex",
+        "latex",
+        "bib"
+      ],
+      "VimL": [
+        "vim",
+        "viml",
+        "gvim",
+        "ex",
+        "exs"
+      ],
+      "YAML": [
+        "yaml",
+        "yml"
+      ],
+      "TypeScript": [
+        "ts",
+        "typescript"
+      ]
+}
