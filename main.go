@@ -3,57 +3,71 @@ package main
 import (
     "bufio"
     "encoding/json"
-    "fmt"
     "os"
     "strings"
 )
 
 func main() {
-    // Print all command-line arguments without the first one
+    
+    // Parse all command line arguments
     var args = os.Args[1:]
-    fmt.Println(args)
 
-    // Exit with a non-zero status code if length of 'args' is not equal to 1
+    // Exit with a non-zero status code if length of 'args' is not equal to 2
     if len(args) != 2 {
         panic("Expected 2 argument")
     }
-
+    
+    // Define output file's path
     writeFilePath := args[1]
 
     // Make sure that the file is empty
     if _, err := os.Stat(writeFilePath); err == nil {
-        os.Remove(writeFilePath)
+        err := os.Remove(writeFilePath)
+        if err != nil {
+            return 
+        }
     }
 
-    // Open a file to write into
+    // Open the file for writing
     writeFile, err := os.Create(writeFilePath)
     if err != nil {
         panic(err)
     }
 
-    fileExtPath := "src/lang.json"
-    fileExtBuff := readJsonFile(fileExtPath)
+    /*
+    Load possible languages supported by Flavored Markdown
+    Source: https://rdmd.readme.io/docs/code-blocks
+    */
 
+    fileExtBuff := readJsonFile("src/lang.json")
+
+    // Load files from the specified directory
     dirFiles := getFiles(args[0])
 
     for _, file := range dirFiles {
 
-        if file == "out.md" {
+        // Ignore output file
+        if file == writeFilePath {
             continue
         }
 
+        // Validate file extensions
         currentFileExt := getFileExtension(file)
-        fmt.Println("Current file extension: ", currentFileExt)
         toWrite := checkFileExtension(currentFileExt, fileExtBuff)
 
+
+        // Process writing to the output file
         if toWrite {
-            writeFile.WriteString("## " + file + " `." + currentFileExt + "`\n\n")
-            writeFile.WriteString("```" + currentFileExt + "\n" + readFile(file) + "```\n\n")
+            _, _ = writeFile.WriteString("## " + file + " `." + currentFileExt + "`\n\n")
+            _, _ = writeFile.WriteString("```" + currentFileExt + "\n" + readFile(file) + "```\n\n")
         }
     }
 
     // Close opened files
-    writeFile.Close()
+    closeErr := writeFile.Close()
+    if closeErr != nil {
+        panic(closeErr)
+    }
 }
 
 // Define a function to get names of the files from the directory
@@ -113,7 +127,7 @@ func readFile(fileName string) string {
     return contents
 }
 
-// Read contents of the json file
+// Read contents of the json file to a map (a.k.a. dictionary)
 func readJsonFile(path string) map[string][]string {
     // Open the file
     file, err := os.Open(path)
@@ -152,18 +166,10 @@ func getFileExtension(fileName string) string {
     return fileName[index+1:]
 }
 
-// Get name of the file without file extension
-func getFileName(fileName string) string {
-    // Get the last index of the period
-    index := strings.LastIndex(fileName, ".")
-
-    // Return the name of the file
-    return fileName[:index]
-}
-
-// Create a function to check if the file extension is in the map of extensions
+// Create a function to check if the file extension is in the map of extensions -> return type bool
 func checkFileExtension(fileExtension string, fileExtensions map[string][]string) bool {
     for _, value := range fileExtensions {
+        // Iterate over multiple extensions for a given language
         for _, ext := range value {
             if ext == fileExtension {
                 return true
